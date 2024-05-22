@@ -1,0 +1,15 @@
+services:
+  
+  exame-web-service-only-json:
+    container_name: exame-web-service-only-json
+    build: ./web-service-only-json
+    ports:
+      - 80:80
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 2gb
+
+volumes:
+  db-data:

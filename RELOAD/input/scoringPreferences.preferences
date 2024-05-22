@@ -1,0 +1,5 @@
+* Default scoring preferences file for 'RELOAD'. Comments with '*'.
+
+checker_selection,voting_strategy
+BEST 1, 1
+FILTERED 10, HALF

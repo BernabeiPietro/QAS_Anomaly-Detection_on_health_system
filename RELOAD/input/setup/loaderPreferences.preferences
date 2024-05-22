@@ -1,0 +1,10 @@
+*Default loaders file for RELOAD
+*Add relative paths to loaders starting from loaders folder, or through GUI
+
+
+
+
+/home/pietro/Documenti/unifi/magistrale/QAoS/Experimental_Analysis_of_Systems/RELOAD/input/loaders/Multilabel.loader
+/home/pietro/Documenti/unifi/magistrale/QAoS/Experimental_Analysis_of_Systems/RELOAD/input/loaders/Malware.loader
+/home/pietro/Documenti/unifi/magistrale/QAoS/Experimental_Analysis_of_Systems/RELOAD/input/loaders/DoS.loader
+/home/pietro/Documenti/unifi/magistrale/QAoS/Experimental_Analysis_of_Systems/RELOAD/input/loaders/Integrity.loader

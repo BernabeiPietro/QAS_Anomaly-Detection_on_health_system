@@ -1,0 +1,23 @@
+* Metrics involved in the output of the detection phase. Comments with '*'.
+
+ TP
+
+ TN
+
+ FP
+
+ FN
+
+ FPR
+
+ Precision
+
+ Recall
+
+ FMeasure
+
+ FScore(2)
+
+ MATTHEWS
+
+ NoPrediction

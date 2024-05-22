@@ -1,0 +1,6 @@
+* This file reports on the feature selection techniques to be applied
+
+feature_selection_strategy,threshold,ranked_flag
+INFORMATION_GAIN,3.0,true
+PCA,3.0,true
+GAIN_RATIO,3.0,true

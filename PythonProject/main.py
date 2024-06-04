@@ -18,7 +18,7 @@ URL= "http://localhost:80"
 #if number_of_operation > 0, the web clients executes a number_of_operation operations.
 number_of_operation=0
 # normal behaviour: quantity of web clients
-thread=500
+http_client=500
 
 #Container id to identify the right CGroup.
 CID="cbba32564ebb69a885a84a1471c90db03fcfefa4c73aa147f98ee69cceded38c" #CHANGE ME
@@ -43,7 +43,7 @@ async def main():
     raw_name="raw_"+time_name+".csv"
     ref_name_csv="refined_"+time_name+".csv"
     ref_name_xls="refined_"+time_name+".xls"
-    tasks_execution = [ asyncio.create_task(random_navigation(URL, i, number_of_operation)) for i in range(thread) ]
+    tasks_execution = [ asyncio.create_task(random_navigation(URL, i, number_of_operation)) for i in range(http_client) ]
     random_exe_index=random.randint(0,23)
     file_op_index=0
     for phase in perm[random_exe_index]:

@@ -11,7 +11,6 @@ from collect_metrics.refactoring_csv import calculate_deltas, refactor
 from normal_execution.normal_execution_web_service_simple import random_navigation
 from attack.attack import integrity_attack, malware_attack_client, malware_attack_client_kill, malware_attack_server, malware_integrity_attack_kill
 from collect_metrics.collect import collect_process
-#logger = logging.getLogger(__name__)
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 
 URL= "http://localhost:80"
@@ -22,15 +21,15 @@ number_of_operation=0
 thread=500
 
 #Container id to identify the right CGroup.
-CID="71890ceee4ee760df128213ea2f5a13d8ce08ec6259718103b80a2dbb40da239"
+CID="cbba32564ebb69a885a84a1471c90db03fcfefa4c73aa147f98ee69cceded38c" #CHANGE ME
 #To identify docker network bridge id: docker network ls and copy the associate NETWORK ID of "qas_anomaly-detection_on_health_system_default"
-NET_ID="e918ef1caf54"
+NET_ID="51633e7d9442" #CHANGE ME
 # output folder of csv file (raw and refined)
 csv_dir = "./output_csv"
-#number of data point to collect for each simultation
+#number of data point to collect for each issue
 up_bound_cycle=100
 
-number_of_simulation=3
+number_of_simulation=10
 
 async def main():
   function_list=[normal_behaviour,malware_behaviour,DOS_behaviour,integrity_behaviour]
@@ -42,7 +41,8 @@ async def main():
   for i in range(0,number_of_simulation):
     time_name=time.strftime("%Y%m%d-%H%M%S")
     raw_name="raw_"+time_name+".csv"
-    ref_name="refined_"+time_name+".csv"
+    ref_name_csv="refined_"+time_name+".csv"
+    ref_name_xls="refined_"+time_name+".xls"
     tasks_execution = [ asyncio.create_task(random_navigation(URL, i, number_of_operation)) for i in range(thread) ]
     random_exe_index=random.randint(0,23)
     file_op_index=0
@@ -51,7 +51,7 @@ async def main():
       file_op_index=1
     for task in tasks_execution:
         task.cancel()
-    await refactor(f'{csv_dir}/{raw_name}', f'{csv_dir}/{ref_name}')
+    await refactor(f'{csv_dir}/{raw_name}', f'{csv_dir}/{ref_name_csv}',f'{csv_dir}/{ref_name_xls}')
 
 
 async def integrity_behaviour(raw_name, file_operation):

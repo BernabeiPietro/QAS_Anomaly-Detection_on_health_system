@@ -82,8 +82,8 @@ DETECTION_PREFERENCES_FILE = scoringPreferences.preferences
 FORCE_TRAINING_BASELEARNERS = 1
 
 * Training Preferences for base-learners
-FORCE_TRAINING = 0
+FORCE_TRAINING = 1
 
 * Predict Misclassifications
 PREDICT_MISCLASSIFICATIONS = 0
-PARALLEL_TRAINING = 0
+PARALLEL_TRAINING = 1

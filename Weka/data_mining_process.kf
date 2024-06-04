@@ -555,7 +555,7 @@
 			"class" : "weka.knowledgeflow.steps.TextSaver",
 			"properties" : {
 				"append" : true,
-				"file" : "./QAS_Anomaly-Detection_on_health_system/PythonProject/output_csv/result/result_integrity",
+				"file" : "./QAS_Anomaly-Detection_on_health_system/PythonProject/output_csv/result/result_integrity.txt",
 				"name" : "TextSaver",
 				"writeTitleString" : false
 			},
@@ -1079,7 +1079,7 @@
 			"class" : "weka.knowledgeflow.steps.TextSaver",
 			"properties" : {
 				"append" : true,
-				"file" : "./QAS_Anomaly-Detection_on_health_system/PythonProject/output_csv/result/result_dos",
+				"file" : "./QAS_Anomaly-Detection_on_health_system/PythonProject/output_csv/result/result_dos.txt",
 				"name" : "TextSaver2",
 				"writeTitleString" : false
 			},
@@ -1623,7 +1623,7 @@
 			"class" : "weka.knowledgeflow.steps.TextSaver",
 			"properties" : {
 				"append" : true,
-				"file" : "./QAS_Anomaly-Detection_on_health_system/PythonProject/output_csv/result/result_malware",
+				"file" : "./QAS_Anomaly-Detection_on_health_system/PythonProject/output_csv/result/result_malware.txt",
 				"name" : "TextSaver22",
 				"writeTitleString" : false
 			},
@@ -2269,7 +2269,7 @@
 			"class" : "weka.knowledgeflow.steps.TextSaver",
 			"properties" : {
 				"append" : true,
-				"file" : "./QAS_Anomaly-Detection_on_health_system/PythonProject/output_csv/result/result",
+				"file" : "./QAS_Anomaly-Detection_on_health_system/PythonProject/output_csv/result/result.txt",
 				"name" : "TextSaver222",
 				"writeTitleString" : false
 			},

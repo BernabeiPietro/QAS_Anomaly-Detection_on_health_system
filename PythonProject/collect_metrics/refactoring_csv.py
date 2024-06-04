@@ -10,7 +10,6 @@ column_times_names_to_refine = [
     "user_usec",
     "system_usec"]
 column_names_to_refine = [
-    "nr_periods",
     "nr_throttled",
     "throttled_usec",
     "rbytes",
@@ -41,6 +40,7 @@ column_names_to_refine = [
 column_names_to_remove = [
   "core_sched.force_idle_usec",
   "nr_bursts",
+  "nr_periods",
   "burst_usec",
   "dbytes",
   "dios",
@@ -71,7 +71,7 @@ field_slab=[
 ]
 microsecond=1000000		
 
-async def refactor(csv_filepath_input, csv_filepath_output):
+async def refactor(csv_filepath_input, csv_filepath_output, xls_filepath_output):
   logging.info("start refactoring")
   df = pd.read_csv(csv_filepath_input)
   logging.info("remove columns from csv")
@@ -82,7 +82,7 @@ async def refactor(csv_filepath_input, csv_filepath_output):
   df=calc_ratio_sec(df,column_names_to_refine,"usage_usec_delta")
   df=calc_ratio(df,field_slab,"slab")
   df.to_csv(csv_filepath_output, index=False)
-				
+  df.to_excel(xls_filepath_output)			
 
 
 def calculate_deltas(df, column_names_to_refine):
@@ -134,11 +134,17 @@ def calc_ratio_sec(df,data_column, time_column):
    df[f"{col}/sec"]=df[f"{col}_delta"]/df[time_column]*microsecond
    df=df.drop(f"{col}_delta", axis=1)
   return df
-
-#csv_filepath_input="./PythonProject/output_csv/refined_final.csv"
-#csv_filepath_output="./PythonProject/output_csv/refined_final_refactor.csv"
-#df = pd.read_csv(csv_filepath_input)
-#logging.info("calculate delta of csv")
-#df=calc_ratio_sec(df,column_names_to_refine,"usage_usec_delta")
-#df=calc_ratio(df,field_slab,"slab")
-#df.to_csv(csv_filepath_output, index=False)
+"""
+for file in ["/home/pietro/Documenti/unifi/magistrale/QAoS/Experimental_Analysis_of_Systems/QAS_Anomaly-Detection_on_health_system/PythonProject/output_csv/raw_20240426-201720.csv",
+             "/home/pietro/Documenti/unifi/magistrale/QAoS/Experimental_Analysis_of_Systems/QAS_Anomaly-Detection_on_health_system/PythonProject/output_csv/raw_20240427-101704.csv",
+             "/home/pietro/Documenti/unifi/magistrale/QAoS/Experimental_Analysis_of_Systems/QAS_Anomaly-Detection_on_health_system/PythonProject/output_csv/raw_20240427-105124.csv", 
+             "/home/pietro/Documenti/unifi/magistrale/QAoS/Experimental_Analysis_of_Systems/QAS_Anomaly-Detection_on_health_system/PythonProject/output_csv/raw_20240427-112603.csv"]:
+  df = pd.read_csv(file)
+  logging.info("calculate delta of csv")
+  df=remove_columns(df,column_names_to_remove)
+  logging.info("calculate delta of csv")
+  df=calculate_deltas(df,column_times_names_to_refine)
+  df=calculate_deltas(df,column_names_to_refine)
+  df=calc_ratio_sec(df,column_names_to_refine,"usage_usec_delta")
+  df=calc_ratio(df,field_slab,"slab")
+  df.to_excel(file+"_xls.xlsx")			"""

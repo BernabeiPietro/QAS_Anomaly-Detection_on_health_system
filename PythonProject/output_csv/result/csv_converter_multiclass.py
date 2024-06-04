@@ -64,11 +64,13 @@ def convert_txt_to_csv(txt_file, csv_filename_prefix):
     detailed_df=pd.DataFrame(detailed_list,columns=["scheme"]+detailed_field)
     confusion_df=pd.DataFrame(confusion_list,columns=["scheme"]+confusion_field)
     # Salva il DataFrame in un file CSV
+
     summary_df.to_csv(f'{csv_filename_prefix}_summary.csv', index=False)
+    summary_df.to_excel(f'{csv_filename_prefix}_summary.xlsx', index = None, header=True)
     detailed_df.to_csv(f'{csv_filename_prefix}_detailed.csv', index=False)
+    detailed_df.to_excel(f'{csv_filename_prefix}_detailed.xlsx', index = None, header=True)
     confusion_df.to_csv(f'{csv_filename_prefix}_confusion.csv', index=False)
-
-
+    confusion_df.to_excel(f'{csv_filename_prefix}_confusion.xlsx',  index = None, header=True)
 
 def summary_extraction(summary_section, summary_index, row, summary_data):
     if summary_section and row!="":
@@ -97,7 +99,7 @@ def detailed_extraction(detailed_section, row):
 
 def confusion_extraction(confusion_section, row):
     words=[]
-    if confusion_section and not (row=="" or row=='   a   b   c   d   <-- classified as'):
+    if confusion_section and not (row=="" or 'classified as' in row):
             # Dividi la riga in un elenco di parole
         words=row.split()
         if words[5]=="d":

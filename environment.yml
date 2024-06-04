@@ -1,4 +1,4 @@
-name: qaos
+name: qas
 channels:
   - bioconda
   - defaults
@@ -66,4 +66,3 @@ dependencies:
       - tinydb==4.8.0
       - tus-py==1.3.4
       - tuspy==1.0.3
-prefix: /home/pietro/anaconda3/envs/qaos
